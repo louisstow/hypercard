@@ -1,0 +1,11 @@
+{
+	"name": "Hypercard",
+	"description": "Making the web fun",
+	"author": "Louis Stowasser",
+	"dependencies": {
+		"express": "3.0.0",
+		"ff": "0.0.17",
+		"underscore": "1.4.3",
+		"redis": "0.8.2"
+	}
+}

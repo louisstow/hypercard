@@ -1,0 +1,43 @@
+<html>
+<head>
+	<link href="styles.css" rel="stylesheet" />
+	<title>Death by Diamonds</title>
+	<script src="underscore-min.js"></script>
+	<script src="Spineless.js"></script>
+</head>
+<body>
+<div class="container">
+	<div id="preview" class="column">
+		<h2>Preview</h2>
+		<div id="preview-area">
+			
+		</div>
+	</div>
+
+	<div id="edit" class="column">
+		<h2>Edit</h2>
+		Type:
+		<select id="type">
+			<option value="none" selected>Select a type...</option>
+			<optgroup label="Container">
+				<option value="stack">Stack</option>
+				<option value="grid">Grid</option>
+				<option value="list">List</option>
+			</optgroup>
+			<optgroup label="Content">
+				<option value="image">Image</option>
+				<option value="text">Text</option>
+				<option value="video">Video</option>
+			</optgroup>
+		</select>
+
+		<div id="form">
+
+		</div>
+	</div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

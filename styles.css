@@ -1,0 +1,39 @@
+body {
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+div { box-sizing: border-box; }
+label {
+	display: block;
+}
+
+.column {
+	float: left;
+	
+	padding: 10px;
+	height: 100%;
+}
+
+#preview {
+	width: 60%;
+	border-right: 1px solid #ccc;
+}
+
+#edit {
+	width: 40%;
+}
+
+#preview-area {
+	width: 100%;
+	
+	background: #eee;
+	padding: 20px;
+}
+
+.card {
+	border: 1px solid #ccc;
+	background: #fff;
+	min-height: 50px;
+	box-shadow: 1px 1px 1px #ccc;
+	border-radius: 3px;
+}
