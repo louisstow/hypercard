@@ -16,6 +16,7 @@ var ParamsView = Spineless.View.extend({
 	htmlString: "<div class='card {{type}}' style='background-color: {{bgcolor}};'>{{content}}</div>",
 
 	render: function () {
+		console.log("RENDER")
 		var compile = _.template(this.htmlString);
 		this.model.content = compile(this.model);
 

@@ -3,9 +3,20 @@ var ListView = ParamsView.extend({
 		type: "list"
 	},
 
-	htmlString: "<div class='list'></div>",
+	htmlString: "<div class='list'>{{content}}</div>",
 
 	template: [
-		{view: LinkThing}
-	]
+		{view: LinkThing, id: "linkThing"}
+	],
+
+	render: function () {
+		this.model.content = "";
+
+		// turn the subcards into embed calls
+		for (var i = 0; i < this.linkThing.children.length; ++i) {
+			this.model.content += "<card id='" + this.linkThing.children[i].model.id + "'/>";
+		}
+		
+		ListView.super(this, "render", arguments);
+	}
 });

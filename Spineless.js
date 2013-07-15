@@ -568,6 +568,10 @@ View.toDOM = function (ctx, obj, parent) {
 		
 		if (ctx) {
 			ctx.addChild(view);
+
+			if (obj.id) {
+				ctx[obj.id] = view;
+			}
 		}
 
 		return view.el;
