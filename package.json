@@ -4,6 +4,7 @@
 	"author": "Louis Stowasser",
 	"dependencies": {
 		"express": "3.0.0",
+		"jade": "0.27.6",
 		"ff": "0.0.17",
 		"underscore": "1.4.3",
 		"redis": "0.8.2"
