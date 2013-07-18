@@ -39,5 +39,18 @@ var TextView = ParamsView.extend({
 				{tag: "option", value: "right", text: "Right"}
 			]}
 		]},
-	]
+	],
+
+	parse: function (root) {
+		TextView.super(this, "parse", arguments);
+		var container = root.childNodes[0];
+		console.log(container.style.fontFamily.replace(/'/g, "" ))
+		this.set({
+			"fontSize": parseInt(container.style.fontSize, 10),
+			"color": container.style.color,
+			"fontFamily": container.style.fontFamily.replace(/'/g, ""),
+			"align": container.style.textAlign,
+			"text": container.innerHTML.trim()
+		});
+	}
 });

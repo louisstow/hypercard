@@ -505,6 +505,10 @@ var View = Event.extend({
 		var oldvalue = this.model[key];
 		this.model[key] = value;
 
+		if (this[key] && this.form.indexOf(this[key]) > -1) {
+			this[key].value = value;
+		}
+
 		this.emit("change", key, oldvalue);
 		this.emit("change:"+key, oldvalue);
 	},

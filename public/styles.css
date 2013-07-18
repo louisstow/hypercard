@@ -43,16 +43,21 @@ card {
 	padding: 10px;
 }
 
+/** STACK **/
+.stack { position: relative; }
+.stack > card { display: none; }
+card.visible { display: block; }
+.stack .controls { position: absolute; right: 10px; top: 5px; }
+
+/** GRID **/
 .card.grid { border: 0; box-shadow: none; }
-
-
-.grid-1 card { width: 100%; }
-.grid-2 card { width: 50%; }
-.grid-3 card { width: 33.33%; }
-.grid-4 card { width: 25%; }
-.grid-5 card { width: 20%; }
-.grid-6 card { width: 16.66%; }
-.grid card { float: left }
+.grid-1 > card { width: 100%; }
+.grid-2 > card { width: 50%; }
+.grid-3 > card { width: 33.33%; }
+.grid-4 > card { width: 25%; }
+.grid-5 > card { width: 20%; }
+.grid-6 > card { width: 16.66%; }
+.grid > div > card { float: left }
 
 .seperator { border-top: 1px solid #eee; border-bottom: 1px solid #ccc }
 

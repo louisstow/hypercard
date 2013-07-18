@@ -4,13 +4,14 @@ block content
 	div.container
 		div#preview.column
 			h2 Preview
-			div#preview-area
+			div#preview-area !{content}
+
 			
 		div#edit.column
 			h2 Edit
 			span Type:
 			select#type
-				option(value="none", selected) Select a type...
+				option(value="none") Select a type...
 				optgroup(label="Container")
 					option(value="stack") Stack
 					option(value="grid") Grid

@@ -28,6 +28,10 @@ function chooseType (type) {
 			break;
 		case "list":
 			form = new ListView();
+			break;
+		case "stack":
+			form = new StackView();
+			break;
 	}
 
 	// if type is found, add to form
@@ -39,3 +43,14 @@ function chooseType (type) {
 function updatePreview (html) {
 	document.getElementById("preview-area").innerHTML = html;
 }
+
+$(function () {
+	if (location.href.indexOf("/edit") > 0) {
+		var root = document.getElementById("preview-area").childNodes[0];
+		var type = root.className.split(" ")[1];
+
+		chooseType(type);
+		form.parse(root);
+		$("#type").val(type);
+	}
+});

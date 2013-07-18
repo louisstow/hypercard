@@ -17,5 +17,18 @@ var ImageView = ParamsView.extend({
 			{tag: "span", text: "Caption:"},
 			{tag: "input", id: "caption"}
 		]}
-	]
+	],
+
+	parse: function(root) {
+		ImageView.super(this, "parse", arguments);
+		
+		var caption = root.childNodes[0];
+		var img = root.childNodes[1];
+
+		console.log(caption.innerHTML, img.src)
+		this.set({
+			caption: caption.innerHTML,
+			src: img.src
+		});
+	}
 });

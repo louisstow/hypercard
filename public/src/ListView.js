@@ -18,5 +18,17 @@ var ListView = ParamsView.extend({
 		}
 		
 		ListView.super(this, "render", arguments);
+	},
+
+	parse: function (root) {
+		ListView.super(this, "parse", arguments);
+
+		var cards = root.querySelectorAll(".list > card");
+		for (var i = 0; i < cards.length; ++i) {
+			this.linkThing.addChild(new LinkItem({
+				superview: this.linkThing.container,
+				id: cards[i].getAttribute("src")
+			}));
+		}
 	}
 });

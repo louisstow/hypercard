@@ -4,7 +4,7 @@ var ParamsView = Spineless.View.extend({
 	},
 
 	init: function () {
-		this.defaults.bgcolor = "#fff";
+		this.defaults.bgcolor = "transparent";
 		this.defaults.password = "";
 		
 		var oldTemplate = this.template;
@@ -23,12 +23,22 @@ var ParamsView = Spineless.View.extend({
 		].concat(this.template);
 		
 		this.template.push({tag: "button", id: "save-button", text: "Save"});
+
+		// if edit in the URL, change the POST destination
+		// and create a Remix button
+		if (window.location.href.indexOf("/edit") > 0) {
+			this.url = "/edit";
+			this.template.push({tag: "button", id: "remix-button", text: "Remix"})
+		} else {
+			this.url = "/create";
+		}
+
 		ParamsView(this, "init", arguments);
 		this.template = oldTemplate;
 	},
 
 	save: function () {
-		this.post("/create", {
+		this.post(this.url, {
 			html: this.compiled,
 			pass: this.model.password
 		});
@@ -49,5 +59,9 @@ var ParamsView = Spineless.View.extend({
 
 		this.compiled = compile(this.model);
 		updatePreview(this.compiled);
+	},
+
+	parse: function (root) {
+		this.set("bgcolor", root.style.backgroundColor);
 	}
 });

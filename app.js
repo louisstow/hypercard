@@ -38,8 +38,29 @@ app.post("/create", function (req, res) {
 	});
 });
 
-app.post("/:id/edit", function (req, res) {
-	res.send("TODO");
+app.post("/edit", function (req, res) {
+	ff(function () {
+		var id = req.body.id;
+
+		client.get(id+":pass", this.slot());
+	}, function (pass) {
+		//password protected and mismatch
+		if (pass && pass !== req.body.pass) {
+			res.send(500);
+			return this.fail();
+		}
+
+		client.set(req.body.id, req.body.html);
+		res.send(200);
+	});
+});
+
+app.get("/:id/edit", function (req, res) {
+	ff(function () {
+		client.get(req.params.id, this.slot());
+	}, function (html) {
+		res.render("edit", {content: html});
+	});
 });
 
 app.get("/:id", function (req, res) {
