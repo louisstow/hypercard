@@ -20,5 +20,17 @@ var StackView = ParamsView.extend({
 		}
 		
 		ListView.super(this, "render", arguments);
+	},
+
+	parse: function (root) {
+		StackView.super(this, "parse", arguments);
+
+		var cards = root.querySelectorAll(".stack > card");
+		for (var i = 0; i < cards.length; ++i) {
+			this.linkThing.addChild(new LinkItem({
+				superview: this.linkThing.container,
+				id: cards[i].getAttribute("src")
+			}));
+		}
 	}
 });

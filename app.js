@@ -21,6 +21,11 @@ function getUniqID (next) {
 	}).cb(next);
 }
 
+function errorHandler (err) {
+	console.error("FF Error", err);
+	if (err.stack) console.error(err.stack);
+}
+
 app.get("/", function(req, res) {
 	res.render("home");
 });
@@ -35,12 +40,16 @@ app.post("/create", function (req, res) {
 		}
 
 		res.json({id: id});
-	});
+	}).error(errorHandler);
 });
 
 app.post("/edit", function (req, res) {
 	ff(function () {
 		var id = req.body.id;
+		if (!id || !id.trim()) {
+			res.send(500);
+			return this.fail();
+		}
 
 		client.get(id+":pass", this.slot());
 	}, function (pass) {
@@ -52,7 +61,7 @@ app.post("/edit", function (req, res) {
 
 		client.set(req.body.id, req.body.html);
 		res.send(200);
-	});
+	}).error(errorHandler);
 });
 
 app.get("/:id/edit", function (req, res) {
@@ -60,7 +69,7 @@ app.get("/:id/edit", function (req, res) {
 		client.get(req.params.id, this.slot());
 	}, function (html) {
 		res.render("edit", {content: html});
-	});
+	}).error(errorHandler);
 });
 
 app.get("/:id", function (req, res) {
@@ -72,7 +81,7 @@ app.get("/:id", function (req, res) {
 		} else {
 			res.render("frame", {content: html});
 		}
-	});
+	}).error(errorHandler);
 });
 
 app.listen(8080);

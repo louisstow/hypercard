@@ -1,6 +1,7 @@
 var ParamsView = Spineless.View.extend({
 	events: {
-		"click save-button": "save"
+		"click save-button": "save",
+		"click remix-button": "remix"
 	},
 
 	init: function () {
@@ -28,28 +29,44 @@ var ParamsView = Spineless.View.extend({
 		// and create a Remix button
 		if (window.location.href.indexOf("/edit") > 0) {
 			this.url = "/edit";
-			this.template.push({tag: "button", id: "remix-button", text: "Remix"})
+			this.template.push({tag: "button", id: "remix-button", text: "Remix"});
+			var idMatch = location.pathname.match(/\/(.+)\/edit\/?/);
+			this.defaults.id = idMatch[1];
 		} else {
 			this.url = "/create";
 		}
 
 		ParamsView(this, "init", arguments);
 		this.template = oldTemplate;
+
+		// creation complete
+		this.on("sync:post", function (resp) {
+			console.log("SAVED", resp);
+			if (resp.id) {
+				window.location = "/" + resp.id + "/edit"
+			}
+		});
 	},
 
 	save: function () {
-		this.post(this.url, {
+		var data = {
+			html: this.compiled,
+			pass: this.model.password
+		};
+
+		if (this.model.id) { data.id = this.model.id; }
+
+		this.post(this.url, data);
+	},
+
+	remix: function () {
+		this.post("/create", {
 			html: this.compiled,
 			pass: this.model.password
 		});
-
-		// creation complete
-		this.once("sync:post", function (resp) {
-			console.log("SAVED", resp);
-		});
 	},
 
-	htmlString: "<div class='card {{type}}' style='background-color: {{bgcolor}};'>{{content}}</div>",
+	htmlString: "<div class='card {{type}}' style='background: {{bgcolor}};'>{{content}}</div>",
 
 	render: function () {
 		var compile = _.template(this.htmlString);

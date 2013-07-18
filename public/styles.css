@@ -47,7 +47,7 @@ card {
 .stack { position: relative; }
 .stack > card { display: none; }
 card.visible { display: block; }
-.stack .controls { position: absolute; right: 10px; top: 5px; }
+.stack .controls { position: absolute; right: 10px; top: 5px; z-index: 1 }
 
 /** GRID **/
 .card.grid { border: 0; box-shadow: none; }

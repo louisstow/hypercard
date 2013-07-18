@@ -42,12 +42,15 @@ var LinkItem = Spineless.View.extend({
 
 	template: [
 		{tag: "li", children: [
-			{tag: "span", id: "label"},
+			{tag: "span", id: "label", children: [
+				{tag: "a", id: "link", target: "_blank"}
+			]},
 			{tag: "button", text: "x", id: "remove-button"}
 		]}
 	],
 
 	render: function () {
-		this.label.textContent = this.model.id;
+		this.link.textContent = this.model.id;
+		this.link.href = "/" + this.model.id + "/edit";
 	}
 });
