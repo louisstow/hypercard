@@ -30,5 +30,25 @@ var GridView = ParamsView.extend({
 		}
 		
 		ListView.super(this, "render", arguments);
+	},
+
+	parse: function (root) {
+		GridView.super(this, "parse", arguments);
+
+		var cols = root.childNodes[0].className.split("-")[1];
+		var cards = root.querySelectorAll("div > card");
+		
+		this.set({
+			cols: cols || 2,
+			spacing: parseInt(cards[0].style.paddingLeft, 10) || 5
+		});
+		
+
+		for (var i = 0; i < cards.length; ++i) {
+			this.linkThing.addChild(new LinkItem({
+				superview: this.linkThing.container,
+				id: cards[i].getAttribute("src")
+			}));
+		}
 	}
 });
