@@ -3,7 +3,7 @@ var StackView = ParamsView.extend({
 		type: "stack"
 	},
 
-	htmlString: "<div class='stack'><div class='controls'><a class='prev'>&lt;</a> <a class='next'>&gt;</a></div>{{content}}</div>",
+	htmlString: "<div class='stack'><div class='controls'><a class='prev'></a> <a class='next'></a></div>{{content}}</div>",
 
 	template: [
 		{view: LinkThing, id: "linkThing"}
@@ -28,7 +28,7 @@ var StackView = ParamsView.extend({
 		var cards = root.querySelectorAll(".stack > card");
 		for (var i = 0; i < cards.length; ++i) {
 			this.linkThing.addChild(new LinkItem({
-				superview: this.linkThing.container,
+				superview: this.linkThing.list,
 				id: cards[i].getAttribute("src")
 			}));
 		}

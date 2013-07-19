@@ -6,15 +6,11 @@ document.body.addEventListener("click", function (e) {
 
 //stack left
 GlobalEvent.on("prev", function (e) {
-	console.log("PREV", e)
-
 	var stack = Stack.get($(e.target).parent().parent());
 	stack.prev();
 });
 
 GlobalEvent.on("next", function (e) {
-	console.log("NEXT", e)
-
 	var stack = Stack.get($(e.target).parent().parent());
 	stack.next();
 });

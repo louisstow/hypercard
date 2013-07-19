@@ -4,6 +4,7 @@ var LinkThing = Spineless.View.extend({
 	},
 
 	template: [
+		{tag: "h3", text: "Subcards"},
 		{tag: "form", id: "form", children: [
 			{tag: "label", children: [
 				{tag: "input", id: "add-input"},
@@ -22,7 +23,7 @@ var LinkThing = Spineless.View.extend({
 		}
 
 		this.addChild(new LinkItem({
-			superview: this.container,
+			superview: this.list,
 			id: id
 		}));
 

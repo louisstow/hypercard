@@ -1,6 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
 
-body {
+html, body {
 	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 	margin: 0;
 	padding: 0;
@@ -107,10 +107,10 @@ card.visible { display: block; }
 }
 
 #form button.remove {
-	background: url("./images/x_14x14.png") no-repeat;
+	background: url("./images/x_14x14.png") no-repeat 0 3px;
 	width: 24px;
 	height: 24px;
-	vertical-align: middle;
+	vertical-align: top;
 	margin-left: 5px; 
 }
 
@@ -118,10 +118,31 @@ button.control-button {
 	position: absolute;
 	top: -2px;
 	right: -2px;
+	height: 40px;
 }
 
 button.remix-button { 
 	position: absolute;
 	top: -2px;
 	right: 68px;
+	height: 40px;
+}
+
+.controls a.prev {
+	background: url('/images/prev.png') no-repeat;
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+}
+
+.controls a.next {
+	background: url('/images/next.png') no-repeat;
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+}
+
+a.open {
+	float: right;
+	
 }

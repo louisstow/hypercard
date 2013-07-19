@@ -54,7 +54,7 @@ app.post("/edit", function (req, res) {
 		client.get(id+":pass", this.slot());
 	}, function (pass) {
 		//password protected and mismatch
-		if (pass && pass !== req.body.pass) {
+		if (!pass || (pass && pass !== req.body.pass)) {
 			res.send(500);
 			return this.fail();
 		}
@@ -68,6 +68,10 @@ app.get("/:id/edit", function (req, res) {
 	ff(function () {
 		client.get(req.params.id, this.slot());
 	}, function (html) {
+		if (!html) {
+			return res.render("404", {id: req.params.id});
+		}
+
 		res.render("edit", {content: html});
 	}).error(errorHandler);
 });

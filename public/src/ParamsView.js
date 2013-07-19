@@ -79,6 +79,6 @@ var ParamsView = Spineless.View.extend({
 	},
 
 	parse: function (root) {
-		this.set("bgcolor", root.style.backgroundColor);
+		this.set("bgcolor", root.style.background);
 	}
 });

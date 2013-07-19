@@ -26,7 +26,7 @@ var ListView = ParamsView.extend({
 		var cards = root.querySelectorAll(".list > card");
 		for (var i = 0; i < cards.length; ++i) {
 			this.linkThing.addChild(new LinkItem({
-				superview: this.linkThing.container,
+				superview: this.linkThing.list,
 				id: cards[i].getAttribute("src")
 			}));
 		}
