@@ -8,8 +8,8 @@ app.set('views', path.resolve('./views'));
 app.set('view engine', 'jade');
 app.set('view options', {layout: false});
 
-var redis = require("redis");
-var client = redis.createClient();
+var redis = require("redis-url");
+var client = redis.connect(process.env.REDISTOGO_URL);
 
 var ff = require("ff");
 
@@ -84,4 +84,4 @@ app.get("/:id", function (req, res) {
 	}).error(errorHandler);
 });
 
-app.listen(8080);
+app.listen(process.env.PORT || 8080);
