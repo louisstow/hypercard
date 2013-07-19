@@ -4,7 +4,7 @@ body {
 	padding: 0;
 }
 
-div { box-sizing: border-box; }
+div { box-sizing: border-box; -moz-box-sizing: border-box; }
 label {
 	display: block;
 }
@@ -12,6 +12,7 @@ label {
 card {
 	display: block;
 	box-sizing: border-box;
+	-moz-box-sizing: border-box;
 }
 
 .column {
