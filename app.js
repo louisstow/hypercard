@@ -15,7 +15,7 @@ var ff = require("ff");
 
 function getUniqID (next) {
 	ff(function () {
-		client.incr("ID", this.slot());	
+		client.incr("_ID_", this.slot());	
 	}, function (id) {
 		this.pass(id.toString(36));
 	}).cb(next);
@@ -46,7 +46,7 @@ app.post("/create", function (req, res) {
 app.post("/edit", function (req, res) {
 	ff(function () {
 		var id = req.body.id;
-		if (!id || !id.trim()) {
+		if (!id || !id.trim() || isNaN(parseInt(id, 36))) {
 			res.send(500);
 			return this.fail();
 		}
