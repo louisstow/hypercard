@@ -11,7 +11,7 @@ var ParamsView = Spineless.View.extend({
 		var oldTemplate = this.template;
 		this.template = [
 			{tag: "label", children: [
-				{tag: "span", text: "Background Color:"},
+				{tag: "span", text: "Background:"},
 				{tag: "input", id: "bgcolor"}
 			]},
 

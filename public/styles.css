@@ -1,7 +1,10 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
+
 body {
-	font-family: Helvetica, Arial, sans-serif;
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 	margin: 0;
 	padding: 0;
+	font-weight: 400;
 }
 
 div { box-sizing: border-box; -moz-box-sizing: border-box; }
@@ -15,6 +18,7 @@ card {
 	-moz-box-sizing: border-box;
 }
 
+a { color: #3887F3 }
 .column {
 	float: left;
 	padding: 10px;
@@ -27,13 +31,16 @@ card {
 }
 
 #edit {
+	border-left: 1px solid #ccc;
 	width: 40%;
+	position: relative;
+	left: -1px;
 }
 
 #preview-area {
 	width: 100%;
 	
-	background: #eee;
+	background: #eee url('./images/bg.png');
 	padding: 20px;
 }
 
@@ -63,3 +70,31 @@ card.visible { display: block; }
 .seperator { border-top: 1px solid #eee; border-bottom: 1px solid #ccc }
 
 .clearer { clear: both }
+
+#edit label { display: block; margin: 5px 0 }
+#edit label span { width: 130px; display: inline-block; font-weight: 600; color: #3887F3 }
+#edit label input { width: 150px; padding: 5px; }
+#edit label input[name="fontSize"] { width: 30px; margin-right: 5px }
+#edit label textarea { width: 300px; height: 80px; padding: 5px; outline: none }
+#form button { 
+	padding: 8px 15px; 
+	background: #328f70;
+	border: 0;
+	color: #fff;
+	font-size: 18px;
+	font-family: 'Open Sans', Helvetica, sans-serif;
+}
+
+#form { overflow: auto; }
+
+.header {
+	background: #3fb58e;
+	height: 40px;
+	padding: 6px 10px;
+	font-size: 18px;
+	color: white;
+	font-weight: 600;
+	margin: 0;
+}
+
+.column > h2 { margin-top: 0 }

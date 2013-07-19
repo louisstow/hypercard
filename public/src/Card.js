@@ -1,13 +1,17 @@
+//store HTML strings in the cache
+//to avoid spamming the server
+var CardCache = {};
+
 xtag.register('card', {
 	lifecycle: {
-		created: function () {
-			console.log("CREATED")
-		},
-
 		inserted: function () {
 			var el = this;
 			var id = el.getAttribute("src");
-			console.log("INSERTED", id)
+
+			if (CardCache[id]) {
+				el.innerHTML = CardCache[id];
+				return;
+			}
 
 			$.ajax({
 				method: "GET",
@@ -15,8 +19,8 @@ xtag.register('card', {
 				dataType: "text",
 
 				success: function (html) {
-					console.log(html);
 					el.innerHTML = html;
+					CardCache[id] = html;
 				}
 			})
 		}
