@@ -23,13 +23,13 @@ var ParamsView = Spineless.View.extend({
 			{tag: "div", className: "seperator"}
 		].concat(this.template);
 		
-		this.template.push({tag: "button", id: "save-button", text: "Save"});
+		this.template.push({tag: "button", className: "control-button", id: "save-button", text: "Save"});
 
 		// if edit in the URL, change the POST destination
 		// and create a Remix button
 		if (window.location.href.indexOf("/edit") > 0) {
 			this.url = "/edit";
-			this.template.push({tag: "button", id: "remix-button", text: "Remix"});
+			this.template.push({tag: "button", className: "remix-button", id: "remix-button", text: "Remix"});
 			var idMatch = location.pathname.match(/\/(.+)\/edit\/?/);
 			this.defaults.id = idMatch[1];
 		} else {

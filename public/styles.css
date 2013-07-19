@@ -33,8 +33,7 @@ a { color: #3887F3 }
 #edit {
 	border-left: 1px solid #ccc;
 	width: 40%;
-	position: relative;
-	left: -1px;
+	margin-left: -1px;
 }
 
 #preview-area {
@@ -98,3 +97,31 @@ card.visible { display: block; }
 }
 
 .column > h2 { margin-top: 0 }
+
+#form button.add {
+	background: url("./images/plus_alt_24x24.png") no-repeat;
+	width: 24px;
+	height: 24px;
+	vertical-align: middle;
+	margin-left: 5px; 
+}
+
+#form button.remove {
+	background: url("./images/x_14x14.png") no-repeat;
+	width: 24px;
+	height: 24px;
+	vertical-align: middle;
+	margin-left: 5px; 
+}
+
+button.control-button { 
+	position: absolute;
+	top: -2px;
+	right: -2px;
+}
+
+button.remix-button { 
+	position: absolute;
+	top: -2px;
+	right: 68px;
+}

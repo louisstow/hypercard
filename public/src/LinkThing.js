@@ -7,7 +7,7 @@ var LinkThing = Spineless.View.extend({
 		{tag: "form", id: "form", children: [
 			{tag: "label", children: [
 				{tag: "input", id: "add-input"},
-				{tag: "button", text: "Add", id: "add-button"}
+				{tag: "button", className: "add", id: "add-button"}
 			]},
 		]},
 
@@ -45,7 +45,7 @@ var LinkItem = Spineless.View.extend({
 			{tag: "span", id: "label", children: [
 				{tag: "a", id: "link", target: "_blank"}
 			]},
-			{tag: "button", text: "x", id: "remove-button"}
+			{tag: "button", className: "remove", id: "remove-button"}
 		]}
 	],
 
