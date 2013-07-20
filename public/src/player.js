@@ -6,7 +6,7 @@ document.body.addEventListener("click", function (e) {
 	//handle card: links
 	if (e.target.nodeName === "A") {
 		var dest = e.target.getAttribute("href");
-		if (dest.indexOf("card:") === 0) {
+		if (dest && dest.indexOf("card:") === 0) {
 			//find the parent tag
 			var card = getParentCard(e.target);
 			dest = dest.substr(5);
@@ -78,5 +78,5 @@ function getParentCard (node) {
 		if (node.nodeName === "CARD") {
 			return node;
 		}
-	} while(node = node.parentNode)
+	} while(node && (node = node.parentNode))
 }
