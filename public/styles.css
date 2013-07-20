@@ -96,6 +96,8 @@ card.visible { display: block; }
 	margin: 0;
 }
 
+.header a {color: white; text-decoration: none;}
+
 .column > h2 { margin-top: 0 }
 
 #form button.add {
@@ -116,14 +118,14 @@ card.visible { display: block; }
 
 button.control-button { 
 	position: absolute;
-	top: -2px;
+	top: 0px;
 	right: -2px;
 	height: 40px;
 }
 
 button.remix-button { 
 	position: absolute;
-	top: -2px;
+	top: 0px;
 	right: 68px;
 	height: 40px;
 }
@@ -144,5 +146,27 @@ button.remix-button {
 
 a.open {
 	float: right;
-	
+	padding-right: 20px;
+	background: url('./images/open.png') no-repeat 100% 5px;
+}
+
+div.error { 
+	display: none; 
+	background: rgb(255, 202, 108);
+	padding: 8px 10px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	height: 40px;
+}
+
+strong.message {
+	margin-right: 10px;
+}
+
+#preview span.id {
+	font-family: monospace;
+	font-weight: 300;
+	margin-left: 20px;
 }

@@ -45,6 +45,12 @@ var ParamsView = Spineless.View.extend({
 			if (resp.id) {
 				window.location = "/" + resp.id + "/edit"
 			}
+
+			if (resp.error) {
+				showError(resp);
+			} else {
+				hideError();
+			}
 		});
 	},
 

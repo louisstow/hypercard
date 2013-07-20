@@ -1,13 +1,19 @@
 extends layout
 
 block content
+	div.error
+		strong.message
+		span.tip
+
 	div.header
-		span Hypecard	
+		span 
+			a(href='/') Hypecard	
 
 	div.container
 		div#preview.column
-			a.open Open
+			a.open(target='_blank', href='./') Open
 			h2 Preview
+				span.id
 
 			div#preview-area !{content}
 

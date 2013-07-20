@@ -38,7 +38,8 @@ var LinkItem = Spineless.View.extend({
 	},
 
 	events: {
-		"click remove-button": "removeFromParent"
+		"click remove-button": "removeFromParent",
+		"mouseover link": "highlight"
 	},
 
 	template: [
@@ -49,6 +50,10 @@ var LinkItem = Spineless.View.extend({
 			{tag: "button", className: "remove", id: "remove-button"}
 		]}
 	],
+
+	highlight: function (e) {
+		console.log("HIGHLIGHT", this.label)
+	},
 
 	render: function () {
 		this.link.textContent = this.model.id;

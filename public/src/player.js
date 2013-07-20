@@ -2,6 +2,21 @@
 var GlobalEvent = new Spineless.Event();
 document.body.addEventListener("click", function (e) {
 	GlobalEvent.emit(e.target.className, e);
+
+	//handle card: links
+	if (e.target.nodeName === "A") {
+		var dest = e.target.getAttribute("href");
+		if (dest.indexOf("card:") === 0) {
+			//find the parent tag
+			var card = getParentCard(e.target);
+			dest = dest.substr(5);
+			
+			//change the src to the desired tag
+			card.setAttribute("src", dest);
+			e.preventDefault();
+			return false;
+		}
+	}
 }, false);
 
 //stack left
@@ -56,4 +71,12 @@ Stack.get = function (stackElem) {
 	}
 
 	return Stack.table[id];
+}
+
+function getParentCard (node) {
+	do {
+		if (node.nodeName === "CARD") {
+			return node;
+		}
+	} while(node = node.parentNode)
 }

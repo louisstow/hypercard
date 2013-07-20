@@ -44,11 +44,23 @@ function updatePreview (html) {
 	document.getElementById("preview-area").innerHTML = html;
 }
 
+function showError (err) {
+	$("strong.message").text(err.error);
+	$("span.tip").text(err.tip);
+	$(".error").show();
+}
+
+function hideError () {
+	$(".error").hide();
+}
+
 $(function () {
 	if (location.href.indexOf("/edit") > 0) {
 		var root = document.getElementById("preview-area").childNodes[0];
 		var type = root.className.split(" ")[1];
+		var idMatch = location.pathname.match(/\/(.+)\/edit\/?/);
 
+		$(".id").text("/" + idMatch[1]);
 		chooseType(type);
 		form.parse(root);
 		$("#type").val(type);

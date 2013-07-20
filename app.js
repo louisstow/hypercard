@@ -54,13 +54,22 @@ app.post("/edit", function (req, res) {
 		client.get(id+":pass", this.slot());
 	}, function (pass) {
 		//password protected and mismatch
-		if (!pass || (pass && pass !== req.body.pass)) {
-			res.send(500);
-			return this.fail();
+		if (!pass) {
+			return res.json({
+				error: "Cannot edit cards without a password.", 
+				tip: "Enter a password and Remix instead of Save to create a new card."
+			});
+		}
+
+		if (pass && pass !== req.body.pass) {
+			return res.json({
+				error: "Password does not match.",
+				tip: "Remix to create a new card with the entered password."
+			});
 		}
 
 		client.set(req.body.id, req.body.html);
-		res.send(200);
+		res.json({ok: true});
 	}).error(errorHandler);
 });
 
